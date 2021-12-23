@@ -1,0 +1,84 @@
+2018-08-18 오후 
+	
+=========================================================================
+2018-08-09 오후
+	USB.C --> Demo_Process 에서 Demo_Application() 호출 제거
+	usbh_msc_usr.c -->USBH_USR_MSC_Application(void) 에 코드 추가
+=========================================================================
+2018-08-09 새벽
+	- usbh_ioreq.c USBH_CtlReq  
+		phost->RequestState == CMD_WAIT 일때 phost->Control.state  값이
+		바코드스캐너는 CTRL_ERROR 로 나와서 status =USBH_FAIL 로 되어 문제가 있음
+		--> status =USBH_OK 로 강제 지정하여 회피
+		
+	- usbh_hid_keybd.c  디코딩 테이블을 qwerty 키보드 배열로 함.
+	
+	바코드 리더는 성공함
+	
+
+=========================================================================
+2018-08-05	
+	- USB에 사용되는 타이머는 TIM2 인데, 이것은 UART 에 사용하고 있어서 TIM5로 바꾸고
+	  인터럽트 핸들러를 추가 해줌 - stm32f4xx_it.c
+	
+	
+	- stm32f4xx_it.c 에서 USB 인터럽트 연결 해줌
+	
+	- disconnected 이벤트를 코어별로 잘 처리되게 수정--> con/discon 해도 인식됨
+	
+	- USB 전원도 코어별로 잘 처리되게 수정
+
+
+=========================================================================
+핀 지정
+	SOF 는 안쓴다..
+	
+	#define HOST_POWERSW_FS1_VBUS_GPIO                 GPIOA
+	#define HOST_POWERSW_FS1_VBUS_GPIO_PIN             GPIO_Pin_10
+	#define HOST_POWERSW_FS2_VBUS_GPIO                 GPIOB
+	#define HOST_POWERSW_FS2_VBUS_GPIO_PIN             GPIO_Pin_12
+
+TODO : USB 전원을 켜는 방법?
+TODO : USB 초기한 후에는 메인루프가 멈춰 버린다..-디버그?
+	
+	[코드계위]
+	Demo_Init()
+		USB_OTG_BSP_Init		- usb_bsp.c
+		USB_OTG_BSP_ConfigVBUS	- usb_bsp.c  
+			// RCC_APB2PeriphClockCmd   		---클럭을 통과 못하고 있다..
+			GPIO_Init
+			GPIO_SetBits
+			USB_OTG_BSP_mDelay	- usb_bsp.c	--- 이게 제대로 동작안한다.	
+													usb_bsp.c 파일에서 해당 함수 내용을 kdelay로 대체
+													-- 0804 -- TIM2에서 TIM5로 변경하고.. kdelay 제거
+
+
+
+		USBH_Init - usbh_core.c
+
+			USBH_DeInit		- usbh_core.c
+				USBH_Free_Channel 	- usb_hcs.c
+			
+			HCD_Init		- usb-hcd.c
+				USB_OTG_SelectCore						
+				USB_OTG_DisableGlobalInt	- usb_core.c 
+				---------------- 여기까지 통과 ---------
+				USB_OTG_CoreInit
+					USB_OTG_WRITE_REG32
+					USB_OTG_CoreReset
+						USB_OTG_BSP_uDelay  - usb_bsp.c	--- 이게 제대로 동작안한다.	
+														usb_bsp.c 파일에서 해당 함수 내용을 kdelay로 대체
+
+					
+				USB_OTG_SetCurrentMode
+				USB_OTG_CoreInitHost
+				USB_OTG_EnableGlobalInt
+				
+		
+		
+		USB_OTG_BSP_EnableInterrupt
+			
+			
+	
+
+

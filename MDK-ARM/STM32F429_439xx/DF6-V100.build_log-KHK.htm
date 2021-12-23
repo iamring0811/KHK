@@ -1,0 +1,105 @@
+<html>
+<body>
+<pre>
+<h1>礦ision Build Log</h1>
+<h2>Project:</h2>
+C:\Users\Admin\OneDrive - Moe, Inc\Firmware\R-600S\备悼何\MT\Prj\M7_S_Current\MDK-ARM\Project.uvproj
+Project File Date:  09/02/2020
+
+<h2>Output:</h2>
+Build target 'STM32F429_439xx'
+compiling eep.c...
+linking...
+Program Size: Code=131616 RO-data=9612 RW-data=4600 ZI-data=92352  
+FromELF: creating hex file...
+After Build - User command #1: C:\Keil\\ARM\ARMCC\bin\fromelf.exe --bin --output=DF6-V100.bin .\STM32F429_439xx\DF6-V100.axf
+".\STM32F429_439xx\DF6-V100.axf" - 0 Error(s), 0 Warning(s).
+Load "C:\\Users\\Admin\\OneDrive - Moe, Inc\\Firmware\\R-600S\\备悼何\\MT\\Prj\\M7_S_Current\\MDK-ARM\\STM32F429_439xx\\DF6-V100.axf" 
+Erase Done.
+Programming Done.
+Verify OK.
+Application running ...
+Load "C:\\Users\\Admin\\OneDrive - Moe, Inc\\Firmware\\R-600S\\备悼何\\MT\\Prj\\M7_S_Current\\MDK-ARM\\STM32F429_439xx\\DF6-V100.axf" 
+Erase Done.
+Programming Done.
+Verify OK.
+Application running ...
+icit type is missing ("int" assumed)
+                        clr_cursor_mem_set();
+..\touch.c(1588): error:  #147: declaration is incompatible with "void clr_cursor_mem_set(void)" (declared at line 26 of "..\util\lcd.h")
+                        clr_cursor_mem_set();
+..\touch.c(1589): error:  #77-D: this declaration has no storage class or type specifier
+                        cursor_set = 0;
+..\touch.c(1589): error:  #147: declaration is incompatible with "u16 cursor_set" (declared at line 433 of "..\dsp.h")
+                        cursor_set = 0;
+..\touch.c(1591): error:  #260-D: explicit type is missing ("int" assumed)
+                        dsp_cursor_mem_seq(cursor_set);
+..\touch.c(1591): error:  #92: identifier-list parameters may only be used in a function definition
+                        dsp_cursor_mem_seq(cursor_set);
+..\touch.c(1591): error:  #147: declaration is incompatible with "void dsp_cursor_mem_seq(u16)" (declared at line 27 of "..\util\lcd.h")
+                        dsp_cursor_mem_seq(cursor_set);
+..\touch.c(1592): error:  #169: expected a declaration
+                }
+..\touch.c(1664): warning:  #12-D: parsing restarts here after previous syntax error
+                        USER_ID[7] = buff_user_id[7] = 'E';
+..\touch.c(1665): error:  #77-D: this declaration has no storage class or type specifier
+                        USER_ID[8] = buff_user_id[8] = ' ';
+..\touch.c(1665): error:  #147: declaration is incompatible with "char USER_ID[21]" (declared at line 191 of "..\util\eep.h")
+                        USER_ID[8] = buff_user_id[8] = ' ';
+..\touch.c(1665): warning:  #520-D: initialization with "{...}" expected for aggregate object
+                        USER_ID[8] = buff_user_id[8] = ' ';
+..\touch.c(1665): error:  #57: this operator is not allowed in a constant expression
+                        USER_ID[8] = buff_user_id[8] = ' ';
+..\touch.c(1666): error:  #77-D: this declaration has no storage class or type specifier
+                        USER_ID[9] = buff_user_id[9] = ' ';
+..\touch.c(1666): error:  #147: declaration is incompatible with "int USER_ID[8]" (declared at line 1665)
+                        USER_ID[9] = buff_user_id[9] = ' ';
+..\touch.c(1666): warning:  #520-D: initialization with "{...}" expected for aggregate object
+                        USER_ID[9] = buff_user_id[9] = ' ';
+..\touch.c(1666): error:  #57: this operator is not allowed in a constant expression
+                        USER_ID[9] = buff_user_id[9] = ' ';
+..\touch.c(1667): error:  #169: expected a declaration
+                }
+..\touch.c(1681): warning:  #12-D: parsing restarts here after previous syntax error
+                enter_mem_set();
+..\touch.c(1682): error:  #77-D: this declaration has no storage class or type specifier
+                modex = MODE_MEMORY;
+..\touch.c(1682): error:  #148: variable "modex" has already been initialized
+                modex = MODE_MEMORY;
+..\touch.c(1683): warning:  #1295-D: Deprecated declaration ReadMemory - give arg types
+                ReadMemory();
+..\touch.c(1683): error:  #260-D: explicit type is missing ("int" assumed)
+                ReadMemory();
+..\touch.c(1683): error:  #147: declaration is incompatible with "void ReadMemory(void)" (declared at line 148 of "..\util\eep.h")
+                ReadMemory();
+..\touch.c(1684): warning:  #1295-D: Deprecated declaration dsp_memory - give arg types
+                dsp_memory();
+..\touch.c(1684): error:  #260-D: explicit type is missing ("int" assumed)
+                dsp_memory();
+..\touch.c(1684): error:  #147: declaration is incompatible with "void dsp_memory(void)" (declared at line 269 of "..\dsp.h")
+                dsp_memory();
+..\touch.c(1685): error:  #169: expected a declaration
+        }
+..\touch.c(1721): warning:  #12-D: parsing restarts here after previous syntax error
+                dsp_cursor_mem_seq(cursor_set);
+..\touch.c(1722): error:  #169: expected a declaration
+        }else tch_error();
+..\touch.c(1723): error:  #169: expected a declaration
+  }
+..\touch.c(1754): warning:  #12-D: parsing restarts here after previous syntax error
+                }else tch_error();
+..\touch.c(1755): error:  #169: expected a declaration
+        }
+..\touch.c(1787): warning:  #12-D: parsing restarts here after previous syntax error
+                }else tch_error();
+..\touch.c(1788): error:  #169: expected a declaration
+        }
+..\touch.c(1817): warning:  #12-D: parsing restarts here after previous syntax error
+                erase_box0(132,230,132+48+18,230+24);
+..\touch.c(1819): error:  #169: expected a declaration
+                if (UNIT_FLAG == UNIT_SI) {
+..\touch.c: 12 warnings, 30 errors
+compiling dsp.c...
+compiling eep.c...
+".\STM32F429_439xx\DF6-V100.axf" - 30 Error(s), 12 Warning(s).
+Target not created

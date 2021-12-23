@@ -1,0 +1,4 @@
+1.QC 
+ 1) List of sample에는 어느 텍스트를 넣어야 하나?
+ 2) Negative / Positive 순서는 어느것을 기준으로 하나?
+  

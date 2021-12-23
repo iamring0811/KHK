@@ -1,0 +1,25 @@
+<html>
+<body>
+<pre>
+<h1>킮ision Build Log</h1>
+<h2>Project:</h2>
+D:\DFI\MT\Prj\M7_S\MDK-ARM\Project.uvproj
+Project File Date:  07/17/2019
+
+<h2>Output:</h2>
+Build target 'STM32F429_439xx'
+compiling main.c...
+compiling USB_FILE.c...
+..\USB\USB_FILE.c(40): warning:  #177-D: variable "writefn" was declared but never referenced
+        char writefn[32]; 
+..\USB\USB_FILE.c(45): warning:  #550-D: variable "filesize" was set but never used
+        int filesize=0;                         // 디렉토리명과 파일명을 담을 새로운 변수
+..\USB\USB_FILE.c(46): warning:  #177-D: variable "b1" was declared but never referenced
+        u8      b1;
+..\USB\USB_FILE.c: 3 warnings, 0 errors
+compiling touch.c...
+linking...
+Program Size: Code=56448 RO-data=2228 RW-data=964 ZI-data=71892  
+FromELF: creating hex file...
+After Build - User command #1: C:\Keil4\\ARM\ARMCC\bin\fromelf.exe --bin --output=DF6-tst0.bin .\STM32F429_439xx\DF6-tst0.axf
+".\STM32F429_439xx\DF6-tst0.axf" - 0 Error(s), 3 Warning(s).
